@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Creation Form</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        form > div {
+            margin-bottom: 10px;
+        }
+
+        form label {
+            display: block;
+        }
+
+        form input, form textarea {
+            width: 300px;
+        }
+
+        form input[type="submit"] {
+            width: auto;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div layout:fragment="content">
+        <h1>Create Product</h1>
+        <form th:action="@{/product/create}" th:object="${productModel}" method="post">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" th:field="*{name}" required>
+                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></p>
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <textarea id="description" th:field="*{description}" required></textarea>
+                <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error"></p>
+            </div>
+            <div>
+                <label for="price">Price:</label>
+                <input type="number" id="price" th:field="*{price}" step="0.01" required>
+                <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="error"></p>
+            </div>
+            <div>
+                <input type="submit" value="Create">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

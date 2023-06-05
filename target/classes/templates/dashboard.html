@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+
+<head>
+</head>
+<body>
+
+		<!-- This is a starter page to use for the dashboard that has not yet been implemented  -->
+
+	<div layout:fragment="content">
+		<table style="width: 50%; margin-left:auto;margin-right:auto;" >
+			<thead>
+				<tr>
+					<th style="text-align: center;"></th>
+					<th style="text-align: center;"></th>
+					<th style="text-align: center;"></th>
+					<th style="text-align: center;"></th>
+				</tr>
+			</thead>
+	
+			<tbody>
+				<tr th:if="${}">
+					<td style="text-align: center;" colspan="4"></td>
+				</tr>
+				<tr th:each=" : ${}">
+					<td style="text-align: center;"><h5 th:text="${}"></h5></td>
+					<td style="text-align: center;"><h5 th:text="${}"></h5></td>
+					<td style="text-align: center;"><h5 th:text="${}"></h5></td>
+					<td style="text-align: center;"><h5 th:text="${}"></h5></td>
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
+	
+</body>
+
+
+</html>
